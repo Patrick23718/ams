@@ -1,0 +1,77 @@
+{
+  "name": "number-format.js",
+  "nick": "javascript-number-formatter",
+  "description": "Lightweight & Fast JavaScript Number Formatter",
+  "version": "2.0.9",
+  "homepage": "http://mottie.github.com/javascript-number-formatter/",
+  "main": "lib/format.min.js",
+  "demo": "https://github.com/Mottie/javascript-number-formatter/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Mottie/javascript-number-formatter.git"
+  },
+  "author": {
+    "name": "KPL",
+    "url": "https://code.google.com/u/100789773228459308870/"
+  },
+  "maintainers": [
+    {
+      "name": "Rob Garrison",
+      "url": "https://github.com/Mottie",
+      "email": "wowmotty@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": "https://github.com/Mottie/javascript-number-formatter/issues",
+  "docs": "http://mottie.github.com/javascript-number-formatter/index.html",
+  "keywords": [
+    "number",
+    "format",
+    "formatter",
+    "currency"
+  ],
+  "files": [
+    "lib/",
+    "index.d.ts"
+  ],
+  "xo": {
+    "space": false,
+    "ignore": [
+      "rollup.config.js",
+      "lib"
+    ],
+    "envs": [
+      "node"
+    ],
+    "rules": {
+      "no-sparse-arrays": 0,
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "operator-linebreak": 0
+    }
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "xo && ava",
+    "updater": "npx updates -cu && npm install"
+  },
+  "typings": "./index.d.ts",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "ava": "*",
+    "rollup": "^1.1.2",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-cjs-es": "^0.7.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-terser": "^4.0.3",
+    "updates": "^6.2.1",
+    "xo": "*"
+  }
+}

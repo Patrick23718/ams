@@ -5,8 +5,9 @@ const assureurSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    imageUrl: {
-        type: String
+    DR: {
+        type: Number,
+        required: true
     }
 })
 

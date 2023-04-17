@@ -1,32 +1,96 @@
-const {Assureur, TypeAssureur, ValeurPrime} = require("../models");
+const {Assureur, Category, Quote, Garanty} = require("../models");
 
 const createAssureur = async (body) => {
     return Assureur.create(body)
 }
-const createTypeAssureur = async (body) => {
-    return TypeAssureur.create(body)
-}
-const createAssureurValue = async (body) => {
-    return ValeurPrime.create(body)
+
+const createCategory = async (body) => {
+    return Category.create(body)
 }
 
-const getCheapAssurance = async (value) => {
-    const values = await ValeurPrime.findById(value, datas);
-    let sum = 0
-    for(let i = 0; i < datas.length; i++){
-        sum = sum + datas[i]
+const createQuote = async (body) => {
+    return Quote.create(body)
+}
+
+const createGaranty = async (body) => {
+    return Garanty.create(body)
+}
+
+const getCategorie = () => {
+    return Category.find()
+}
+
+const getCategoryById = (id) => {
+    return Category.findById(id)
+}
+
+const getGaranty = () => {
+    return Garanty.find()
+}
+
+const getGarantyById = (id) => {
+    return Garanty.findById(id)
+}
+
+const searchQuote = async (category, garanty) => {
+    return Quote.find({category, garanty}).populate("category garanty assureur")
+}
+
+const calculateVVVN = (value, taux) => {
+
+}
+
+const getAssurancesPrimes = async (vv, vn, cat, arr) => {
+    const assureurs = await Assureur.find();
+    const category = await Category.findById(cat)
+    let all = Number.POSITIVE_INFINITY
+    console.log(all)
+    let n = -1
+    const tauxFixe = 2500
+    let primes = []
+
+    // On parcourt la liste des assureurs de la bd
+    for(let j = 0; j< assureurs.length; j++){
+        const assur = assureurs[j];
+        sum = 0
+
+
+        // on parcour les guaranties pour trouver les taux et calculer la valeur des categories
+        for(let i = 0; i < arr.length; i++){
+            let price = 0
+            const guaranty = await getGarantyById(arr[i])
+            const data = {category: cat, garanty: guaranty._id, assureur: assur}
+            const quote = await Quote.findOne(data);
+            if(guaranty.type === 'vv'){
+                price = vv
+            } else if (guaranty.type === 'vn'){
+                price = vn
+            }
+            sum = sum + quote.tauxP * price
+        }
+        sum = sum + tauxFixe + assur.DR
+        // numberFormat("# ###,", sum)
+        const DR = assur.DR
+        const x = 2500
+        sum = sum + DR + x
+
+        const asac = 1000
+        const cr = 1000
+        let Acc = calculateACC(sum)
+        let DTA = calculateDTA(category.code)
+        let tva = (sum + Acc + asac) * 19.25 / 100
+        numAll = sum + asac + cr + Acc + DTA + tva
+        primes.push({prime: sum, asac, cr, tva, Acc, DTA, all: numAll})
+        if(all >=  numAll){
+            all = numAll
+            n = j
+        }
+
+
     }
-    return
-    // let prime = []
-    // values.forEach((elt)=>{
-    //     sum = 0
-    //     value.forEach((item)=>{
-    //         sum = sum + elt[item]
-    //     })
-    //     console.log(prime)
-    //     prime.push(sum)
-    // })
-    // return prime // Math.max(...prime)
+    console.log(n)
+    console.log(primes)
+    return primes[n] // Math.max(...prime)
 }
 
 const calculateACC = (value) => {
@@ -44,7 +108,7 @@ const calculateACC = (value) => {
         return 75000
     } else if(value>=10000000 && value<50000000){
         return 200000
-    } else if(value>=500000000){
+    } else{
         return 500000
     }
 }
@@ -65,8 +129,15 @@ const calculateDTA = (value) => {
 
 module.exports = {
     createAssureur,
-    createTypeAssureur,
-    createAssureurValue,
-    getCheapAssurance,
+    createQuote,
+    getAssurancesPrimes,
     calculateACC,
+    createCategory,
+    getCategorie,
+    createGaranty,
+    getGaranty,
+    searchQuote,
+    getGarantyById,
+    getCategoryById,
+    calculateDTA
 }

@@ -1,3 +1,6 @@
 module.exports.Assureur = require('./Assureur')
-module.exports.TypeAssureur = require('./TypeAssurance')
-module.exports.ValeurPrime = require('./ValeurPrime')
+module.exports.Category = require('./Categorie')
+module.exports.Quote = require('./Quotes')
+module.exports.Garanty = require('./Garantie')
+module.exports.Poste = require('./Poste')
+module.exports.Commentaire = require('./Commentaire')

@@ -1,3 +1,166 @@
 <%- include('header.ejs') -%>>
+<!--Contact Page Start-->
+<section class="contact-page">
+    <div class="container">
+        <div class="row">
 
+            <div class="col-xl-8 col-lg-7">
+                <div class="contact-page__right">
+                    <div class="contact-page__form">
+                        <form method="post" action="/">
+                            <div class="row">
+<!--                                <div class="col-xl-6">-->
+<!--                                    <div class="comment-form__input-box">-->
+<!--                                        <input type="text" placeholder="Votre noms" name="name">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class="col-xl-6">
+                                    <div class="comment-form__input-box">
+                                        <input type="email" placeholder="Adresse email" name="email">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                <div class="get-insurance__input-box">
+                                    <select class="selectpicker" name="categories"
+                                            aria-label="Default select example">
+                                        <option selected>Choississez votre categorie</option>
+                                        <%for(let i = 0; i< categories.length; i++) {%>
+                                        <option value="<%= categories[i]._id %>"><%= categories[i].libelle %></option>
+                                        <%}%>
+                                    </select>
+                                </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="comment-form__input-box">
+                                        <input type="text" class="form-control" placeholder="Valeur venale" name="vv">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 px-xl-2">
+                                    <div class="comment-form__input-box">
+                                        <input type="text" placeholder="Valeur à neuf" name="vn">
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="comment-form__input-box">
+                                        <h5>Choississez vos garranties</h5>
+                                    </div>
+                                </div>
+                                <%for(let i = 0; i< garanties.length; i++) {%>
+
+                                <div class="col-xl-4">
+                                    <div class="comment-form__input-box">
+                                        <input type="checkbox" value="<%= garanties[i]._id %>" name="garanties" id="<%= garanties[i]._id %>"> &nbsp; <label
+                                                for="<%= garanties[i]._id %>"> <%= garanties[i].libelle %></label>
+                                    </div>
+                                </div>
+                                <%}%>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12">
+<!--                                    <div class="comment-form__input-box text-message-box">-->
+<!--                                        <textarea name="message" placeholder="Write a message"></textarea>-->
+<!--                                    </div>-->
+                                    <div class="comment-form__btn-box">
+                                        <button type="submit" class="thm-btn comment-form__btn">Send a
+                                            Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5">
+                <div class="contact-page__left">
+                    <!--                    <div class="section-title text-left">-->
+                    <!--                        <div class="section-sub-title-box">-->
+                    <!--                            <p class="section-sub-title">Contact us</p>-->
+                    <!--                            <div class="section-title-shape-1">-->
+                    <!--                                <img src="assets/images/shapes/section-title-shape-1.png" alt="">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="section-title-shape-2">-->
+                    <!--                                <img src="assets/images/shapes/section-title-shape-2.png" alt="">-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <h2 class="section-title__title">Feel free to get in touch with experts</h2>-->
+                    <!--                    </div>-->
+                    <!--                    <table class="table table-striped">-->
+                    <!--                        <thead>-->
+                    <!--                        <tr>-->
+                    <!--                            <th scope="col">#</th>-->
+                    <!--                            <th scope="col">Intitulé</th>-->
+                    <!--                            <th scope="col">Valeur</th>-->
+                    <!--                        </tr>-->
+                    <!--                        </thead>-->
+                    <!--                        <tbody>-->
+                    <!--                        <tr>-->
+                    <!--                            <th scope="row">1</th>-->
+                    <!--                            <td>Prime Nette</td>-->
+                    <!--                            <td>12345678</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <th scope="row">2</th>-->
+                    <!--                            <td>ACC</td>-->
+                    <!--                            <td>1234567</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <th scope="row">3</th>-->
+                    <!--                            <td>Fiche ASAC</td>-->
+                    <!--                            <td>1234567</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <th scope="row">4</th>-->
+                    <!--                            <td>TVA</td>-->
+                    <!--                            <td>1234</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <th scope="row">5</th>-->
+                    <!--                            <td>Carte Rose</td>-->
+                    <!--                            <td>1234567</td>-->
+                    <!--                        </tr>-->
+                    <!--                        <tr>-->
+                    <!--                            <th scope="row">2</th>-->
+                    <!--                            <td>DTA</td>-->
+                    <!--                            <td>1234567</td>-->
+                    <!--                        </tr>-->
+                    <!--                        </tbody>-->
+                    <!--                        <p>TTCA <h3>1234567</h3></p>-->
+                    <!--                    </table>-->
+                    <ul class="cart-total list-unstyled">
+                        <li>
+                            <span>Prime Nette</span>
+                            <span><%= prime%> FCFA</span>
+                        </li>
+                        <li>
+                            <span>ACC</span>
+                            <span><%= Acc%> FCFA</span>
+                        </li>
+                        <li>
+                            <span>Fiche ASAC</span>
+                            <span><%= asac %> FCFA </span>
+                        </li>
+                        <li>
+                            <span>TVA</span>
+                            <span><%= tva%> FCFA</span>
+                        </li>
+                        <li>
+                            <span>Carte Rose</span>
+                            <span><%= cr%> FCFA </span>
+                        </li>
+                        <li>
+                            <span>DTA</span>
+                            <span><%= DTA%> FCFA</span>
+                        </li>
+                        <li>
+                            <span>Total</span>
+                            <span class="cart-total-amount"><%= all%> FCFA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Contact Page End-->
 <%- include('footer.ejs') -%>>

@@ -1,60 +1,34 @@
 const mongoose = require('mongoose')
 
 const quoteSchema = mongoose.Schema({
-    nom: {
-        type: String,
+   category: {
+       type: mongoose.Schema.Types.ObjectId,
+       ref: 'categories',
+       required: true
+   },
+    garanty: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'garanties',
+        required: true
     },
-    prenom: {
-        type: String,
+    assureur: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'assureur',
+        required: true
     },
-    dateNais: {
-        type: Date,
+    tauxP: {
+       type: Number,
     },
-    cni: {
-        type: String,
-    },
-    adresse: {
-        type: String,
-    },
-    tel: {
-        type: String,
-    },
-    profession: {
-        type: String,
-    },
-    numImmatriculation: {
-        type: String,
-    },
-    numChassir: {
-        type: String,
-    },
-    marqueVehicule: {
-        type: String,
-    },
-    energie: {
-        type: String,
-        enum: ['diesel', 'essence'],
-    },
-    puissance: {
-        type: String,
-    },
-    miseEnCirculation: {
-        type: Date,
-    },
-    chargeUtile: {
-        type: String,
-    },
-    valNeuve: {
-        type: String,
-    },
-    carroserie: {
-        type: String,
-    },
-    Nbreplace: {
+    minP: {
         type: Number,
     },
-    valVenale: {
-        type: String,
+    tauxF: {
+        type: Number,
+        default: 0
+    },
+    minF: {
+        type: Number,
+        default: 0
     },
 })
 
