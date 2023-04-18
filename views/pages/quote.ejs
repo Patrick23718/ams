@@ -2,6 +2,7 @@
 <!--Contact Page Start-->
 <section class="contact-page">
     <div class="container">
+        <h2>Obtenir une estimation de votre dévis</h2><br>
         <div class="row">
 
             <div class="col-xl-8 col-lg-7">
@@ -38,6 +39,11 @@
                                 <div class="col-xl-6 px-xl-2">
                                     <div class="comment-form__input-box">
                                         <input type="text" placeholder="Valeur à neuf" name="vn">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="comment-form__input-box">
+                                        <input type="text" class="form-control" placeholder="Nombre de cheveaux">
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
@@ -127,34 +133,37 @@
                     <!--                        </tbody>-->
                     <!--                        <p>TTCA <h3>1234567</h3></p>-->
                     <!--                    </table>-->
-                    <ul class="cart-total list-unstyled">
-                        <li>
-                            <span>Prime Nette</span>
+                    <style>
+
+                    </style>
+                    <ul class="cart-total list-unstyled" style="border: 1px solid grey; border-radius: 20px; padding: 20px 20px; box-shadow: 5px 10px grey">
+                        <li class="d-flex justify-content-between">
+                            <span style="font-size: 20px; text-align: left">Prime Nette</span>
                             <span><%= prime%> FCFA</span>
                         </li>
-                        <li>
-                            <span>ACC</span>
+                        <li class="d-flex justify-content-between">
+                            <span style="font-size: 20px; text-align: left">ACC</span>
                             <span><%= Acc%> FCFA</span>
                         </li>
-                        <li>
-                            <span>Fiche ASAC</span>
+                        <li class="d-flex justify-content-between">
+                            <span style="font-size: 20px; text-align: left">Fiche ASAC</span>
                             <span><%= asac %> FCFA </span>
                         </li>
-                        <li>
-                            <span>TVA</span>
+                        <li class="d-flex justify-content-between">
+                            <span style="font-size: 20px; text-align: left">TVA</span>
                             <span><%= tva%> FCFA</span>
                         </li>
-                        <li>
-                            <span>Carte Rose</span>
+                        <li class="d-flex justify-content-between">
+                            <span style="font-size: 20px; text-align: left">Carte Rose</span>
                             <span><%= cr%> FCFA </span>
                         </li>
-                        <li>
-                            <span>DTA</span>
+                        <li class="d-flex justify-content-between">
+                            <span style="font-size: 20px; text-align: left">DTA</span>
                             <span><%= DTA%> FCFA</span>
                         </li>
-                        <li>
-                            <span>Total</span>
-                            <span class="cart-total-amount"><%= all%> FCFA</span>
+                        <li class="d-flex justify-content-between" style="border-top: 1px solid #0a53be; padding-top: 10px ">
+                            <span style="font-size: 20px; text-align: left">Total TTC</span>
+                            <span class="cart-total-amount"  style="font-weight: bold; color: #0a53be"><%= all%> FCFA</span>
                         </li>
                     </ul>
                 </div>
@@ -163,4 +172,4 @@
     </div>
 </section>
 <!--Contact Page End-->
-<%- include('footer.ejs') -%>>
+<%- include('footer.ejs') -%>
