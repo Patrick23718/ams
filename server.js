@@ -151,6 +151,16 @@ app.post('/categorie', async (req, res) => {
     res.status(201).send(cat)
 })
 
+app.get('/news', (req, res) => {
+    res.status(200).render('pages/news')
+})
+app.get('/equipes', (req, res) => {
+    res.status(200).render('pages/teams')
+})
+
+app.get('/assurances', (req, res) => {
+    res.status(200).render('pages/assurance')
+})
 app.get('/:id', async (req, res) => {
     const post = await posteService.getPosteById(req.params.id)
     const postes= await posteService.getAllPoste();
