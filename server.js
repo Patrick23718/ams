@@ -151,8 +151,9 @@ app.post('/categorie', async (req, res) => {
     res.status(201).send(cat)
 })
 
-app.get('/news', (req, res) => {
-    res.status(200).render('pages/news')
+app.get('/news', async (req, res) => {
+    const blog = await posteService.get3Poste();
+    res.status(200).render('pages/news', { blogs: blog })
 })
 app.get('/equipes', (req, res) => {
     res.status(200).render('pages/teams')
